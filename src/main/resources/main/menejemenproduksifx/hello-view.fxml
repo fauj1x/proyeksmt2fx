@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="1104.0" prefWidth="1932.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DashboardController.java">
+   <top>
+      <ToolBar prefHeight="62.0" prefWidth="1920.0" style="-fx-background-color: #333C5D;" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="1080.0" prefWidth="370.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
+               <font>
+                  <Font name="Montserrat Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" translateX="-100.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/image%209.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label prefHeight="85.0" prefWidth="328.0" text="Edit / Update data">
+               <font>
+                  <Font name="Montserrat Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="buatprod_btn" layoutX="10.0" layoutY="10.0" onAction="#buatprod_btn" prefHeight="55.0" prefWidth="370.0" text="Buat rencana produksi">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" translateX="-68.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/material-symbols_list-alt-add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="dashboard_btn" fx:id="tambahbrg_btn" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="370.0" text="Tambah barang">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" translateX="-88.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/material-symbols-light_box-add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="dashboard_btn" fx:id="tambahkrwn_btn" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="370.0" text="Tambah karyawan">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" translateX="-79.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/mdi_people-add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="31.0" layoutY="94.0" prefHeight="85.0" prefWidth="328.0" text="Master data">
+               <font>
+                  <Font name="Montserrat Bold" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton id="dashboard_btn" fx:id="sriwprod_btn" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="370.0" text="Seluruh riwayat produksi">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" translateX="-56.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/image%204.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="dashboard_btn" fx:id="stokgdg_btn" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="370.0" text="Stok gudang">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-93.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/image%203.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="dashboard_btn" fx:id="slrhkar_btn" layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="370.0" text="Seluruh karyawan">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-77.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/mdi_worker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" prefHeight="55.0" prefWidth="370.0" text="Quality check">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-89.0" translateY="3.0">
+                     <image>
+                        <Image url="@../../img/image%206.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane prefHeight="1048.0" prefWidth="1562.0" style="-fx-background-color: E9EDFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="69.0" layoutY="29.0" text="Dashboard">
+               <font>
+                  <Font name="Montserrat ExtraBold" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="63.0" prefHeight="17.0" prefWidth="163.0" text="Home / Dashboard">
+               <font>
+                  <Font name="Montserrat Regular" size="12.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="468.0" layoutX="96.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="502.0" />
+            <Label layoutX="120.0" layoutY="129.0" text="Produksi / hari">
+               <font>
+                  <Font name="Montserrat Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="468.0" layoutX="678.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="824.0" />
+            <Label layoutX="709.0" layoutY="129.0" text="Riwayat Produksi">
+               <font>
+                  <Font name="Montserrat Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="411.0" layoutX="96.0" layoutY="623.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1020.0" />
+            <JFXTreeTableView layoutX="109.0" layoutY="629.0" prefHeight="400.0" prefWidth="815.0" />
+            <LineChart layoutX="32.0" layoutY="119.0" prefHeight="387.0" prefWidth="478.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <BarChart layoutX="689.0" layoutY="159.0" prefHeight="400.0" prefWidth="800.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
