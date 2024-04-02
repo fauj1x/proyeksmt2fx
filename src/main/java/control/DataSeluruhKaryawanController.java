@@ -1,5 +1,6 @@
 package control;
 
+
 import datatable.data_karyawan;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,55 +16,38 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.menejemenproduksifx.ManagementProduksi;
+
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DashboardController implements Initializable {
-    @FXML
-    private TableView<data_karyawan> jTable1;
+public class DataSeluruhKaryawanController implements Initializable {
 
     @FXML
-    private TableColumn<data_karyawan, String> namaKaryawanColumn;
+    private TableColumn<data_karyawan, String> alamat;
 
     @FXML
-    private TableColumn<data_karyawan, String> alamatKaryawanColumn;
+    private TableColumn<data_karyawan, String> umur;
 
 
     @FXML
-    private TableColumn<data_karyawan, String> jabatanKaryawanColumn;
+    private TableColumn<data_karyawan, String> jabatan;
 
-    public static ObservableList<data_karyawan> loaddata() {
-        Connection connection = koneksi.koneksi.getConnection();
-        ObservableList<data_karyawan> list = FXCollections.observableArrayList();
-        try {
-            PreparedStatement ps = connection.prepareStatement("SELECT id_karyawan, nama_karyawan, umur, jenis_kelamin, alamat, jabatan, kehadiran FROM karyawan1");
-            ResultSet rs = ps.executeQuery();
+    @FXML
+    private TableColumn<data_karyawan, String> jeniskelamin;
 
-            while (rs.next()) {
-                list.add(new data_karyawan(
-                        new SimpleStringProperty(rs.getString("id_karyawan")),
-                        new SimpleStringProperty(rs.getString("nama_karyawan")),
-                        new SimpleStringProperty(rs.getString("umur")),
-                        new SimpleStringProperty(rs.getString("jenis_kelamin")),
-                        new SimpleStringProperty(rs.getString("alamat")),
-                        new SimpleStringProperty(rs.getString("jabatan")),
-                        new SimpleStringProperty(rs.getString("kehadiran"))));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return list;
-    }
+    @FXML
+    private TableColumn<data_karyawan, String> kehadiran;
+
+    @FXML
+    private TableColumn<data_karyawan, String> nama;
+    @FXML
+    private TableView<data_karyawan> Jtable;
+
     @FXML
     private void buatrencana (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("RencanaProduksi.fxml"));
@@ -123,20 +107,48 @@ public class DashboardController implements Initializable {
         stage.setScene(secondscene);
         stage.show();
     }
-    ObservableList<data_karyawan> listm;
-    Connection connection = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
+    public static ObservableList<data_karyawan> loaddata() {
+        Connection connection = koneksi.koneksi.getConnection();
+        ObservableList<data_karyawan> list = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT id_karyawan, nama_karyawan, umur, jenis_kelamin, alamat, jabatan, kehadiran FROM karyawan1");
+            ResultSet rs = ps.executeQuery();
 
-
+            while (rs.next()) {
+                list.add(new data_karyawan(
+                        new SimpleStringProperty(rs.getString("id_karyawan")),
+                        new SimpleStringProperty(rs.getString("nama_karyawan")),
+                        new SimpleStringProperty(rs.getString("umur")),
+                        new SimpleStringProperty(rs.getString("jenis_kelamin")),
+                        new SimpleStringProperty(rs.getString("alamat")),
+                        new SimpleStringProperty(rs.getString("jabatan")),
+                        new SimpleStringProperty(rs.getString("kehadiran"))));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<data_karyawan> dataList = loaddata();
-        jTable1.setItems(dataList);
+        Jtable.setItems(dataList);
 
-        namaKaryawanColumn.setCellValueFactory(new PropertyValueFactory<>("nama_karyawan"));
-        alamatKaryawanColumn.setCellValueFactory(new PropertyValueFactory<>("alamat"));
-        jabatanKaryawanColumn.setCellValueFactory(new PropertyValueFactory<>("jabatan"));
+        nama.setCellValueFactory(new PropertyValueFactory<>("nama_karyawan"));
+        umur.setCellValueFactory(new PropertyValueFactory<>("umur"));
+        jeniskelamin.setCellValueFactory(new PropertyValueFactory<>("jenis_kelamin"));
+        alamat.setCellValueFactory(new PropertyValueFactory<>("alamat"));
+        jabatan.setCellValueFactory(new PropertyValueFactory<>("jabatan"));
+        kehadiran.setCellValueFactory(new PropertyValueFactory<>("kehadiran"));
 
     }
+
 }

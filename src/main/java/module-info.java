@@ -10,9 +10,14 @@ module main.menejemenproduksifx {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires java.desktop;
 
     opens main.menejemenproduksifx to javafx.fxml;
     exports main.menejemenproduksifx;
     exports control;
     opens control to javafx.fxml;
+
+    // Menambahkan deklarasi opens untuk paket datatable
+    opens datatable;
 }

@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="1104.0" prefWidth="1932.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1521.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DashboardController">
    <top>
       <ToolBar prefHeight="62.0" prefWidth="1920.0" style="-fx-background-color: #333C5D;" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="1080.0" prefWidth="370.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="534.0" prefWidth="370.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
+            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
                <font>
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
@@ -36,7 +43,7 @@
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
             </Label>
-            <JFXButton fx:id="buatprod_btn" layoutX="10.0" layoutY="10.0" onAction="#buatrencana" prefHeight="55.0" prefWidth="370.0" text="Buat rencana produksi">
+            <JFXButton fx:id="buatprod_btn" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buatrencana" prefHeight="55.0" prefWidth="370.0" text="Buat rencana produksi">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -48,7 +55,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="tambahbrg_btn" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="370.0" text="Tambah barang">
+            <JFXButton id="dashboard_btn" fx:id="tambahbrg_btn" layoutX="10.0" layoutY="179.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#tambahbrg_btn" prefHeight="55.0" prefWidth="370.0" text="Tambah barang">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -60,7 +67,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="tambahkrwn_btn" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="370.0" text="Tambah karyawan">
+            <JFXButton id="dashboard_btn" fx:id="tambahkrwn_btn" layoutX="10.0" layoutY="234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#tambahkrwn_btn" prefHeight="55.0" prefWidth="370.0" text="Tambah karyawan">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -77,7 +84,7 @@
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
             </Label>
-            <JFXButton id="dashboard_btn" fx:id="sriwprod_btn" layoutX="10.0" layoutY="179.0" prefHeight="55.0" prefWidth="370.0" text="Seluruh riwayat produksi">
+            <JFXButton id="dashboard_btn" fx:id="sriwprod_btn" layoutX="10.0" layoutY="179.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#sriwprod_btn" prefHeight="55.0" prefWidth="370.0" text="Seluruh riwayat produksi">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -89,7 +96,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="stokgdg_btn" layoutX="10.0" layoutY="234.0" prefHeight="55.0" prefWidth="370.0" text="Stok gudang">
+            <JFXButton id="dashboard_btn" fx:id="stokgdg_btn" layoutX="10.0" layoutY="234.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#stokgdg_btn" prefHeight="55.0" prefWidth="370.0" text="Stok gudang">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -101,7 +108,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="slrhkar_btn" layoutX="10.0" layoutY="289.0" prefHeight="55.0" prefWidth="370.0" text="Seluruh karyawan">
+            <JFXButton id="dashboard_btn" fx:id="slrhkar_btn" layoutX="10.0" layoutY="289.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#slrhkar_btn" prefHeight="55.0" prefWidth="370.0" text="Seluruh karyawan">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -113,7 +120,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" prefHeight="55.0" prefWidth="370.0" text="Quality check">
+            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="370.0" text="Quality check">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -129,33 +136,74 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane prefHeight="1048.0" prefWidth="1562.0" style="-fx-background-color: E9EDFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="541.0" prefWidth="871.0" style="-fx-background-color: E9EDFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="69.0" layoutY="29.0" text="Dashboard">
+            <Label layoutX="69.0" layoutY="29.0" text="Dashboard" AnchorPane.topAnchor="29.0">
                <font>
                   <Font name="Montserrat ExtraBold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="70.0" layoutY="63.0" prefHeight="17.0" prefWidth="163.0" text="Home / Dashboard">
+            <Pane layoutX="100.0" layoutY="104.0" minHeight="-Infinity" prefHeight="345.0" prefWidth="428.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;" AnchorPane.topAnchor="104.0">
+               <children>
+                  <AreaChart layoutX="1.0" layoutY="55.0" prefHeight="283.0" prefWidth="426.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <effect>
+                        <Blend mode="OVERLAY" />
+                     </effect>
+                  </AreaChart>
+                  <Label layoutX="28.0" layoutY="28.0" text="Produksi / hari">
+                     <font>
+                        <Font name="Montserrat Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="70.0" layoutY="63.0" prefHeight="17.0" prefWidth="163.0" text="Home / Dashboard" AnchorPane.topAnchor="63.0">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="468.0" layoutX="96.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="502.0" />
-            <Label layoutX="120.0" layoutY="129.0" text="Produksi / hari">
-               <font>
-                  <Font name="Montserrat Bold" size="18.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="468.0" layoutX="678.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="824.0" />
-            <Label layoutX="709.0" layoutY="129.0" text="Riwayat Produksi">
-               <font>
-                  <Font name="Montserrat Bold" size="18.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="411.0" layoutX="96.0" layoutY="623.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1020.0" />
-            <JFXTreeTableView layoutX="109.0" layoutY="629.0" prefHeight="400.0" prefWidth="815.0" />
+            <Pane layoutX="542.0" layoutY="103.0" minHeight="-Infinity" prefHeight="346.0" prefWidth="435.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 15;" AnchorPane.leftAnchor="542.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="103.0">
+               <children>
+                  <Pane cache="true" cacheHint="SCALE">
+                     <children>
+                        <Label layoutX="14.0" layoutY="26.0" text="Riwayat Produksi">
+                           <font>
+                              <Font name="Montserrat Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <BarChart layoutX="-8.0" layoutY="41.0" prefHeight="305.0" prefWidth="444.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <effect>
+                        <Blend mode="OVERLAY" />
+                     </effect>
+                  </BarChart>
+               </children>
+            </Pane>
+            <TableView fx:id="jTable1" layoutX="99.0" layoutY="471.0" prefHeight="51.0" prefWidth="711.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="471.0">
+              <columns>
+                <TableColumn fx:id="namaKaryawanColumn" editable="false" prefWidth="107.0" text="karyawan" />
+                <TableColumn fx:id="alamatKaryawanColumn" editable="false" prefWidth="254.0" text="alamat" />
+                  <TableColumn fx:id="jabatanKaryawanColumn" editable="false" minWidth="0.0" prefWidth="131.0" text="Jabatan" />
+                  <TableColumn fx:id="kehadiranKaryawanColumn" editable="false" minWidth="0.0" prefWidth="218.0" text="kehadiran" />
+              </columns>
+            </TableView>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </AnchorPane>
    </center>
 </BorderPane>
