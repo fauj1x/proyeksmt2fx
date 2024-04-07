@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -149,13 +150,13 @@
                         <Font name="Montserrat Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextField depthTest="DISABLE" layoutX="50.0" layoutY="90.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="641.0" />
+                  <TextField fx:id="nama_txt" depthTest="DISABLE" layoutX="50.0" layoutY="90.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="50.0" />
                   <Text layoutX="50.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jabatan" AnchorPane.topAnchor="311.0">
                      <font>
                         <Font name="Montserrat Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextField depthTest="DISABLE" layoutX="50.0" layoutY="339.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="833.0" />
+                  <TextField fx:id="jabatan_txt" depthTest="DISABLE" layoutX="50.0" layoutY="339.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="50.0" />
                   <Text layoutX="50.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umur">
                      <font>
                         <Font name="Montserrat Bold" size="14.0" />
@@ -166,18 +167,24 @@
                         <Font name="Montserrat Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="617.0" layoutY="431.0" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #CE0000; -fx-background-radius: 12;" text="Hapus Form" textFill="WHITE" AnchorPane.bottomAnchor="99.0">
+                  <JFXButton fx:id="hps_btn" layoutX="617.0" layoutY="431.0" onAction="#hps_btn" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #CE0000; -fx-background-radius: 12;" text="Hapus Form" textFill="WHITE" AnchorPane.bottomAnchor="99.0">
                      <font>
                         <Font name="Montserrat Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <TextField depthTest="DISABLE" layoutX="50.0" layoutY="178.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                  <TextField fx:id="umur_txt" depthTest="DISABLE" layoutX="50.0" layoutY="178.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
                   <Text layoutX="50.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alamat">
                      <font>
                         <Font name="Montserrat Bold" size="14.0" />
                      </font>
                   </Text>
-                  <TextField depthTest="DISABLE" layoutX="50.0" layoutY="257.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                  <TextField fx:id="alamat_txt" depthTest="DISABLE" layoutX="50.0" layoutY="257.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                  <JFXComboBox fx:id="jenis_kelamin" layoutX="617.0" layoutY="92.0" prefHeight="37.0" prefWidth="275.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                  <Text layoutX="617.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jenis Kelamin">
+                     <font>
+                        <Font name="Montserrat Bold" size="14.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>

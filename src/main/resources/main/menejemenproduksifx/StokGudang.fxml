@@ -142,12 +142,26 @@
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="59.0" layoutY="80.0" prefHeight="434.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="80.0">
+            <AnchorPane layoutX="59.0" layoutY="80.0" prefHeight="242.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="80.0">
                <children>
-                  <TableView layoutY="34.0" prefHeight="526.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+                  <TableView fx:id="Jtable" layoutY="-1.0" prefHeight="162.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn fx:id="id_barang" prefWidth="141.0" text="ID Barang" />
+                        <TableColumn fx:id="nama_barang" prefWidth="430.0" text="Nama Barang" />
+                        <TableColumn fx:id="stok" prefWidth="239.0" text="Stok" />
+                        <TableColumn fx:id="kategori" prefWidth="226.0" text="Kategori" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="59.0" layoutY="338.0" prefHeight="292.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;">
+               <children>
+                  <TableView fx:id="Jtable1" layoutY="-1.0" prefHeight="162.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+                     <columns>
+                        <TableColumn fx:id="id_barang1" prefWidth="141.0" text="ID Barang" />
+                        <TableColumn fx:id="nama_barang1" prefWidth="430.0" text="Nama Barang" />
+                        <TableColumn fx:id="stok1" prefWidth="239.0" text="Stok" />
+                        <TableColumn fx:id="kategori1" prefWidth="226.0" text="Kategori" />
                      </columns>
                   </TableView>
                </children>

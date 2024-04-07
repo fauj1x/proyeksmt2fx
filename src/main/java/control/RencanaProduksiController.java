@@ -1,9 +1,12 @@
 package control;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -14,13 +17,15 @@ import javafx.stage.Stage;
 import main.menejemenproduksifx.ManagementProduksi;
 
 import javax.swing.*;
+import java.net.URL;
 import java.sql.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class RencanaProduksiController {
+public class RencanaProduksiController implements Initializable {
 
     @FXML
     private TextField anggarantxt;
@@ -31,8 +36,6 @@ public class RencanaProduksiController {
     @FXML
     private TextField nama_prod;
 
-    @FXML
-    private TextField penanggung_jawab;
 
     @FXML
     private TextField targetProduksitxt;
@@ -44,6 +47,19 @@ public class RencanaProduksiController {
     private DatePicker tanggalselesai;
 
 
+
+    @FXML
+    private ComboBox<String> jenis_barang;
+
+    @FXML
+    private ComboBox<String> penanggung_jawab;
+
+    private ObservableList<String> namaKaryawanList = FXCollections.observableArrayList();
+    private ObservableList<String> idKaryawanList = FXCollections.observableArrayList();
+
+    private ObservableList<String> namabarangList = FXCollections.observableArrayList();
+    private ObservableList<String> idbarangList = FXCollections.observableArrayList();
+
     @FXML
     private void buatrencana (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("RencanaProduksi.fxml"));
@@ -53,55 +69,10 @@ public class RencanaProduksiController {
         stage.setScene(secondscene);
         stage.show();
     }
-    public class Billing {
 
-        // Method untuk mengupdate status produksi berdasarkan tanggal mulai dan selesai
-        public void billing() {
-            Connection connection = null;
-            PreparedStatement statement = null;
-            ResultSet resultSet = null;
 
-            try {
-                connection = koneksi.koneksi.getConnection();
 
-                String query = "SELECT id_produksi, tgl_mul, tgl_sel, status FROM produksi WHERE status = 'Berjalan'";
-                statement = connection.prepareStatement(query);
-                resultSet = statement.executeQuery();
 
-                while (resultSet.next()) {
-                    String idProduksi = resultSet.getString("id_produksi");
-                    LocalDate tanggalMulai = resultSet.getDate("tgl_mul").toLocalDate();
-                    LocalDate tanggalSelesai = resultSet.getDate("tgl_sel").toLocalDate();
-                    String status = resultSet.getString("status");
-
-                    if (status.equals("Berjalan")) {
-                        if (LocalDate.now().isAfter(tanggalSelesai)) {
-                            String updateQuery = "UPDATE produksi SET status = 'Selesai' WHERE id_produksi = ?";
-                            PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
-                            updateStatement.setString(1, idProduksi);
-                            updateStatement.executeUpdate();
-                            updateStatement.close();
-                        }
-                    }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                closeResources(connection, statement, resultSet);
-            }
-        }
-
-        // Method untuk menutup koneksi dan resource terkait
-        private void closeResources(Connection connection, PreparedStatement statement, ResultSet resultSet) {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
     public static String generateNewID() {
         String newID = "PD0000";
 
@@ -153,23 +124,90 @@ public class RencanaProduksiController {
 
         return newdetID;
     }
+
+    @FXML
+    private void loaderidkaryawan() {
+        try (Connection connection = koneksi.koneksi.getConnection()) {
+            String query = "SELECT id_karyawan, nama_karyawan FROM karyawan1 where jabatan = boss";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String idKaryawan = resultSet.getString("id_karyawan");
+                String namaKaryawan = resultSet.getString("nama_karyawan");
+
+
+                idKaryawanList.add(idKaryawan);
+                namaKaryawanList.add(namaKaryawan);
+            }
+
+            penanggung_jawab.setItems(namaKaryawanList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void onComboBoxItemSelected() {
+        String selectedNamaKaryawan = penanggung_jawab.getSelectionModel().getSelectedItem();
+        int selectedIndex = namaKaryawanList.indexOf(selectedNamaKaryawan);
+        String selectedIdKaryawan = idKaryawanList.get(selectedIndex);
+
+    }
+
+    private String selectedIdKaryawan;
+
+    @FXML
+    private void loaderidbarang() {
+        try (Connection connection = koneksi.koneksi.getConnection()) {
+            String query = "SELECT id_barang, nama_barang FROM barang WHERE kategori = 'Jadi'";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String idbarang = resultSet.getString("id_barang");
+                String namabarang = resultSet.getString("nama_barang");
+
+                idbarangList.add(idbarang);
+                namabarangList.add(namabarang);
+            }
+
+            jenis_barang.setItems(namabarangList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onComboBoxItemSelected2() {
+        String selectedbarang = jenis_barang.getSelectionModel().getSelectedItem().toString();
+        int selectedIndex = namabarangList.indexOf(selectedbarang);
+        String selectedIdbarang = idbarangList.get(selectedIndex);
+    }
+
+    private String selectedIdbarang;
+
     @FXML
     void simpan_btn(ActionEvent event) {
         String nama = nama_prod.getText();
-        String penanggung = penanggung_jawab.getText();
+        String penanggung = penanggung_jawab.getSelectionModel().getSelectedItem().toString();
+        String penanggung1 = selectedIdKaryawan;
         String mulai = tanggalmulai.getValue() != null ? tanggalmulai.getValue().toString() : "";
         String selesai = tanggalselesai.getValue() != null ? tanggalselesai.getValue().toString() : "";
         String jlmhkaryawan = jumlah_karyawan.getText();
         String anggaran = anggarantxt.getText();
         String target = targetProduksitxt.getText();
-        new Billing().billing();
+        String id_barang = selectedIdbarang;
+
+
 
         try (Connection connection = koneksi.koneksi.getConnection()) {
-            String insertProduksiSQL = "INSERT INTO produksi (id_produksi, nama_produksi, tgl_mul, tgl_sel, penanggung_jawab,status) VALUES (?, ?, ?, ?, ?,?)";
-            String insertDetailProduksiSQL = "INSERT INTO detail_produksi (id_detail_produksi, jumlah_karyawan, id_produksi, target_produksi, anggaran) VALUES (?, ?, ?, ?, ?)";
+            String insertProduksiSQL = "INSERT INTO produksi (id_produksi, nama_produksi, tgl_mul, tgl_sel, penanggung_jawab,status) VALUES (?, ?, ?, ?, ?, ?)";
+            String insertDetailProduksiSQL = "INSERT INTO detail_produksi (id_detail_produksi, jumlah_karyawan, id_produksi, target_produksi, anggaran) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String updateJumlahBarangSQL = "UPDATE barang SET jumlah = jumlah + ? WHERE id_barang = ?";
 
             try (PreparedStatement produksiStatement = connection.prepareStatement(insertProduksiSQL);
-                 PreparedStatement detailProduksiStatement = connection.prepareStatement(insertDetailProduksiSQL)) {
+                 PreparedStatement detailProduksiStatement = connection.prepareStatement(insertDetailProduksiSQL);
+                 PreparedStatement updateJumlahBarangStatement = connection.prepareStatement(updateJumlahBarangSQL)) {
 
                 String produksiID = generateNewID();
                 String detailProduksiID = generatedetID();
@@ -186,11 +224,18 @@ public class RencanaProduksiController {
                 detailProduksiStatement.setString(3, produksiID);
                 detailProduksiStatement.setString(4, target);
                 detailProduksiStatement.setString(5, anggaran);
+                detailProduksiStatement.setString(6, penanggung1);
+                detailProduksiStatement.setString(7, id_barang);
+
+
+                updateJumlahBarangStatement.setString(1, target);
+                updateJumlahBarangStatement.setString(2, id_barang);
 
                 connection.setAutoCommit(false);
 
                 produksiStatement.executeUpdate();
                 detailProduksiStatement.executeUpdate();
+                updateJumlahBarangStatement.executeUpdate();
 
                 connection.commit();
 
@@ -199,7 +244,6 @@ public class RencanaProduksiController {
                 alert.setHeaderText(null);
                 alert.setContentText("Data berhasil ditambahkan");
                 alert.showAndWait();
-
             } catch (SQLException e) {
                 connection.rollback();
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -212,6 +256,7 @@ public class RencanaProduksiController {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML
@@ -240,7 +285,7 @@ public class RencanaProduksiController {
 
     @FXML
     private void stokgdg_btn (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("SeluruhRiwayatProduksi.fxml"));
+        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("StokGudang.fxml"));
         Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         stage.hide();
         Scene secondscene = new Scene(loader.load());
@@ -266,6 +311,11 @@ public class RencanaProduksiController {
         Scene secondscene = new Scene(loader.load());
         stage.setScene(secondscene);
         stage.show();
+    }
+    public void initialize(URL location, ResourceBundle resources){
+        loaderidkaryawan();
+        loaderidbarang();
+
     }
 
 }

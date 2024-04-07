@@ -106,7 +106,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void stokgdg_btn (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("SeluruhRiwayatProduksi.fxml"));
+        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("StokGudang.fxml"));
         Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         stage.hide();
         Scene secondscene = new Scene(loader.load());

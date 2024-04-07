@@ -90,7 +90,7 @@ public class DataSeluruhKaryawanController implements Initializable {
 
     @FXML
     private void stokgdg_btn (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("SeluruhRiwayatProduksi.fxml"));
+        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("StokGudang.fxml"));
         Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         stage.hide();
         Scene secondscene = new Scene(loader.load());
@@ -111,7 +111,7 @@ public class DataSeluruhKaryawanController implements Initializable {
         Connection connection = koneksi.koneksi.getConnection();
         ObservableList<data_karyawan> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT id_karyawan, nama_karyawan, umur, jenis_kelamin, alamat, jabatan, kehadiran FROM karyawan1");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM karyawan1");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
