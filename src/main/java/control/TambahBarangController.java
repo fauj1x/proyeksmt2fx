@@ -9,7 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.print.*;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,6 +36,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -384,6 +389,8 @@ public class TambahBarangController implements Initializable {
 
         boolean alertShown = false; // Menandai apakah alert telah ditampilkan
 
+        List<Image> barcodeImages = new ArrayList<>(); // Menyimpan gambar barcode
+
         try (Connection connection = koneksi.koneksi.getConnection()) {
             for (int i = 0; i < jumlah; i++) {
                 String kode = generateKode(); // Generate kode unik di awal iterasi
@@ -411,8 +418,8 @@ public class TambahBarangController implements Initializable {
                         // Mengubah gambar menjadi javafx.scene.image.Image
                         Image fxImage = SwingFXUtils.toFXImage((java.awt.image.BufferedImage) awtImage, null);
 
-                        // Menampilkan gambar di ImageView
-                        viewer.setImage(fxImage);
+                        // Menambahkan gambar ke daftar
+                        barcodeImages.add(fxImage);
                     } catch (Exception e) {
                         // Tangani kesalahan jika terjadi
                         e.printStackTrace(); // Untuk debugging, cetak stack trace
@@ -428,9 +435,9 @@ public class TambahBarangController implements Initializable {
                 }
             }
 
-            // Setelah iterasi selesai, panggil printImages
+            // Setelah iterasi selesai, panggil printImages dengan semua gambar barcode
             Paper customPaper = Paper.A6;
-            printImages(viewer, jumlah, customPaper);
+            printImages(barcodeImages, customPaper);
 
             // Tampilkan alert informasi sekali saja
             if (!alertShown) {
@@ -445,6 +452,30 @@ public class TambahBarangController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    // Method untuk mencetak gambar
+    private void printImages(List<Image> images, Paper paper) {
+        double margin = 55; // Misalnya, margin 1 inci (36 piksel) di semua sisi
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null && job.showPrintDialog(viewer.getScene().getWindow())) {
+            PageLayout pageLayout = job.getPrinter().createPageLayout(paper, PageOrientation.PORTRAIT, margin, margin, margin, margin);
+            job.getJobSettings().setPageLayout(pageLayout);
+            for (Image image : images) {
+                viewer.setImage(image); // Set gambar saat ini ke ImageView
+                boolean success = job.printPage(viewer);
+                if (!success) {
+                    System.out.println("Printing failed for a page.");
+                    return; // Keluar dari method jika pencetakan gagal untuk halaman apapun
+                }
+            }
+            job.endJob();
+        } else {
+            System.out.println("Failed to create printer job or show print dialog.");
+        }
+    }
+
+
+
 
     @FXML
     void kode_txt1(KeyEvent event) {
@@ -534,40 +565,6 @@ public class TambahBarangController implements Initializable {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Method untuk mencetak gambar
-    private void printImages(ImageView imageView, int numberOfPages, Paper paper) {
-        double margin = 55; // Misalnya, margin 1 inci (36 piksel) di semua sisi
-        PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null && job.showPrintDialog(viewer.getScene().getWindow())) {
-            PageLayout pageLayout = job.getPrinter().createPageLayout(paper, PageOrientation.PORTRAIT, margin, margin, margin, margin);
-            job.getJobSettings().setPageLayout(pageLayout);
-            for (int i = 0; i < numberOfPages; i++) {
-                boolean success = job.printPage(imageView);
-                if (!success) {
-                    System.out.println("Printing failed for page " + (i + 1));
-                    return; // Keluar dari method jika pencetakan gagal untuk halaman apapun
-                }
-            }
-            job.endJob();
-        } else {
-            System.out.println("Failed to create printer job or show print dialog.");
-        }
-    }
 
 
 
