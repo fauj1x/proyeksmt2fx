@@ -12,11 +12,11 @@ public class ManagementProduksi extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Font.loadFont(getClass().getResourceAsStream("MenejemenProduksiFX/src/main/resources/font/Montserrat-VariableFont_wght.ttf"), 12);
-        FXMLLoader fxmlLoader = new FXMLLoader(ManagementProduksi.class.getResource("Dashboard.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(ManagementProduksi.class.getResource("Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Aplikasi Manajemen Produksi");
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
         stage.show();
     }
 

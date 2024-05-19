@@ -18,7 +18,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="534.0" prefWidth="268.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
+            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#dashboard_btn" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
                <font>
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
@@ -112,12 +112,12 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="370.0" text="Quality check">
+            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#riwayat_transaksi" prefHeight="55.0" prefWidth="370.0" text="Riwayat Transaksi">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-89.0" translateY="3.0">
+                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-79.0" translateY="3.0">
                      <image>
                         <Image url="@../../img/image%206.png" />
                      </image>
@@ -143,36 +143,60 @@
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="59.0" layoutY="95.0" prefHeight="248.0" prefWidth="1024.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="95.0">
+            <AnchorPane layoutX="59.0" layoutY="95.0" prefHeight="248.0" prefWidth="974.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="109.0" AnchorPane.topAnchor="95.0">
                <children>
                   <Text layoutX="32.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produksi berjalan">
                      <font>
                         <Font name="Montserrat Bold" size="12.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="1.0" layoutY="41.0" prefHeight="200.0" prefWidth="1020.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="41.0">
+                  <TableView fx:id="Jtable1" editable="true" layoutX="1.0" layoutY="41.0" prefHeight="200.0" prefWidth="1020.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="41.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="id_produksi" prefWidth="145.0" text="ID Produksi" />
+                      <TableColumn fx:id="nama_produksi" prefWidth="249.0" text="Nama Produksi" />
+                        <TableColumn fx:id="tanggal_mulai" prefWidth="156.0" text="Tanggal Mulai" />
+                        <TableColumn fx:id="tanggal_selesai" prefWidth="128.0" text="Tanggal Selesai" />
+                        <TableColumn fx:id="penanggung_jawab" prefWidth="117.0" text="Penanggung jawab" />
+                        <TableColumn fx:id="status" prefWidth="174.0" text="Status" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="59.0" layoutY="361.0" prefHeight="271.0" prefWidth="1024.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="361.0">
+            <AnchorPane layoutX="59.0" layoutY="361.0" prefHeight="271.0" prefWidth="980.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="361.0">
                <children>
                   <Text layoutX="32.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produksi Selesai">
                      <font>
                         <Font name="Montserrat Bold" size="12.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="2.0" layoutY="36.0" prefHeight="228.0" prefWidth="1020.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="36.0">
+                  <TableView fx:id="Jtable2" editable="true" layoutX="2.0" layoutY="36.0" prefHeight="228.0" prefWidth="971.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="36.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn fx:id="id_produksi1" prefWidth="149.0" text="ID Produksi" />
+                        <TableColumn fx:id="nama_produksi1" prefWidth="252.0" text="Nama Produksi" />
+                        <TableColumn fx:id="tanggal_mulai1" prefWidth="152.0" text="Tanggal Mulai" />
+                        <TableColumn fx:id="tanggal_selesai1" minWidth="2.0" prefWidth="115.0" text="Tanggal Selesai" />
+                        <TableColumn fx:id="penanggung_jawab1" minWidth="0.0" prefWidth="135.0" text="Penanggung jawab" />
+                        <TableColumn fx:id="status1" prefWidth="167.0" text="Status" />
                      </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
+            <JFXButton fx:id="export" layoutX="856.0" layoutY="49.0" onAction="#export" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Export ke excel" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="export1" layoutX="739.0" layoutY="49.0" onAction="#hapus" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #CE0000; -fx-background-radius: 12;" text="Hapus" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="15.0" />
+               </font>
+            </JFXButton>
          </children>
          <BorderPane.margin>
             <Insets />

@@ -22,7 +22,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="534.0" prefWidth="268.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
+            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#dashboard_btn" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
                <font>
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
@@ -116,12 +116,12 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="370.0" text="Quality check">
+            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#riwayat_transaksi" prefHeight="55.0" prefWidth="370.0" text="Riwayat Transaksi">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-89.0" translateY="3.0">
+                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-79.0" translateY="3.0">
                      <image>
                         <Image url="@../../img/image%206.png" />
                      </image>
@@ -137,12 +137,12 @@
    <center>
       <AnchorPane prefHeight="541.0" prefWidth="1280.0" style="-fx-background-color: E9EDFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="59.0" layoutY="29.0" text="Tambah barang" AnchorPane.topAnchor="29.0">
+            <Label layoutX="59.0" layoutY="29.0" text="Update barang" AnchorPane.topAnchor="29.0">
                <font>
                   <Font name="Montserrat ExtraBold" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="59.0" layoutY="63.0" prefHeight="17.0" prefWidth="234.0" text="Edit / Update/ Tambah barang" AnchorPane.topAnchor="63.0">
+            <Label layoutX="59.0" layoutY="63.0" prefHeight="17.0" prefWidth="234.0" text="Edit / Update/ Update barang" AnchorPane.topAnchor="63.0">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
@@ -160,19 +160,13 @@
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField depthTest="DISABLE" layoutX="32.0" layoutY="147.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                    <Text layoutX="38.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jumlah">
+                                    <TextField fx:id="nama_barang" depthTest="DISABLE" layoutX="32.0" layoutY="147.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <Text layoutX="45.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kategori">
                                        <font>
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField depthTest="DISABLE" layoutX="32.0" layoutY="225.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                    <Text layoutX="34.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kategori">
-                                       <font>
-                                          <Font name="Montserrat Bold" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <JFXComboBox layoutX="38.0" layoutY="318.0" prefHeight="46.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <JFXComboBox fx:id="kategori_box" layoutX="38.0" layoutY="307.0" prefHeight="46.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
                                     <JFXButton fx:id="simpan_btn" layoutX="39.0" layoutY="409.0" onAction="#simpan_btn" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Simpan" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Bold" size="15.0" />
@@ -183,34 +177,9 @@
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField depthTest="DISABLE" layoutX="32.0" layoutY="69.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Tambah barang">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <Text layoutX="37.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kode barang">
-                                       <font>
-                                          <Font name="Montserrat Bold" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <JFXButton fx:id="simpan_btn1" layoutX="39.0" layoutY="421.0" onAction="#simpan_btn" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Simpan" textFill="WHITE">
-                                       <font>
-                                          <Font name="Montserrat Bold" size="15.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <TextField fx:id="kodetxt" depthTest="DISABLE" layoutX="37.0" layoutY="91.0" onAction="#kodetxt" prefHeight="41.0" prefWidth="274.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                    <TableView fx:id="Jtable" layoutX="378.0" layoutY="60.0" prefHeight="466.0" prefWidth="625.0">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
-                                      </columns>
-                                    </TableView>
-                                    <JFXComboBox fx:id="keterangan" layoutX="38.0" layoutY="173.0" prefHeight="46.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                    <Text layoutX="39.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="keterangan">
+                                    <TextField fx:id="kode_barang" depthTest="DISABLE" layoutX="32.0" layoutY="69.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <TextField fx:id="harga_satuan" depthTest="DISABLE" layoutX="32.0" layoutY="222.0" prefHeight="41.0" prefWidth="346.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <Text layoutX="38.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga satuan">
                                        <font>
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
@@ -219,32 +188,76 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="Generate Barcode">
+                        <Tab text="Catat barang masuk">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <JFXComboBox layoutX="26.0" layoutY="103.0" prefHeight="47.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
-                                    <Text layoutX="26.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama barang">
+                                    <JFXComboBox fx:id="barang_box" layoutX="26.0" layoutY="253.0" prefHeight="47.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <Text layoutX="26.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama barang">
                                        <font>
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
                                     </Text>
-                                    <JFXButton fx:id="generate_btn" layoutX="26.0" layoutY="251.0" onAction="#generate_btn" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Generate &amp; Print" textFill="WHITE">
+                                    <JFXButton fx:id="generate_btn" layoutX="27.0" layoutY="402.0" onAction="#generate_btn" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Simpan &amp; Print Barcode" textFill="WHITE">
                                        <font>
                                           <Font name="Montserrat Bold" size="15.0" />
                                        </font>
                                     </JFXButton>
-                                    <ImageView fx:id="viewer" fitHeight="150.0" fitWidth="539.0" layoutX="365.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
-                                    <Text layoutX="26.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jumlah">
+                                    <ImageView fx:id="viewer" fitHeight="75.0" fitWidth="197.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Text layoutX="27.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jumlah">
                                        <font>
                                           <Font name="Montserrat Bold" size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField depthTest="DISABLE" layoutX="26.0" layoutY="192.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <TextField fx:id="jumlah_txt" depthTest="DISABLE" layoutX="27.0" layoutY="343.0" prefHeight="41.0" prefWidth="154.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
                                  </children>
                               </AnchorPane>
                           </content>
                         </Tab>
+                      <Tab text="Catat barang keluar">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Text layoutX="37.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kode barang">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <JFXButton fx:id="simpan_btn1" layoutX="39.0" layoutY="421.0" onAction="#simpan_btn1" prefHeight="47.0" prefWidth="270.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Simpan" textFill="WHITE">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TextField fx:id="kode_txt" depthTest="DISABLE" layoutX="37.0" layoutY="187.0" onKeyPressed="#kode_txt1" prefHeight="41.0" prefWidth="274.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <TableView fx:id="Jtable" layoutX="378.0" layoutY="60.0" prefHeight="426.0" prefWidth="625.0">
+                                      <columns>
+                                          <TableColumn fx:id="kode_detail" prefWidth="98.0" text="kode_detail" />
+                                        <TableColumn fx:id="kode_row" prefWidth="98.0" text="Kode barang" />
+                                        <TableColumn fx:id="nama_row" prefWidth="177.0" text="Nama Barang" />
+                                          <TableColumn fx:id="kategori_row" prefWidth="154.0" text="Kategori" />
+                                          <TableColumn fx:id="harga_row" maxWidth="209.0" prefWidth="97.0" text="Harga Satuan" />
+                                      </columns>
+                                    </TableView>
+                                    <Text layoutX="763.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total harga =">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="total" layoutX="871.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <JFXComboBox fx:id="keterangan" layoutX="39.0" layoutY="88.0" prefHeight="46.0" prefWidth="272.0" style="-fx-background-color: E9EDFF; -fx-background-radius: 12;" />
+                                    <Text layoutX="38.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="keterangan">
+                                       <font>
+                                          <Font name="Montserrat Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
                     </tabs>
                   </TabPane>
                </children>

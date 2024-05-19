@@ -17,7 +17,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="534.0" prefWidth="268.0" style="-fx-background-color: FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
+            <JFXButton id="dashboard_btn" fx:id="dashboard_btn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#dashboard_btn" prefHeight="84.0" prefWidth="379.0" text="Dashboard">
                <font>
                   <Font name="Montserrat Bold" size="12.0" />
                </font>
@@ -111,12 +111,12 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="370.0" text="Quality check">
+            <JFXButton id="dashboard_btn" fx:id="qc_btn" layoutX="10.0" layoutY="539.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#riwayat_transaksi" prefHeight="55.0" prefWidth="370.0" text="Riwayat Transaksi">
                <font>
                   <Font name="Montserrat Regular" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-89.0" translateY="3.0">
+                  <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="-79.0" translateY="3.0">
                      <image>
                         <Image url="@../../img/image%206.png" />
                      </image>
@@ -144,7 +144,7 @@
             </Label>
             <AnchorPane layoutX="59.0" layoutY="80.0" prefHeight="434.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 12;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="80.0">
                <children>
-                  <TableView fx:id="Jtable" prefHeight="560.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="Jtable" editable="true" prefHeight="560.0" prefWidth="1037.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nama" prefWidth="75.0" text="Nama" />
                       <TableColumn fx:id="umur" prefWidth="75.0" text="Umur" />
@@ -156,6 +156,16 @@
                   </TableView>
                </children>
             </AnchorPane>
+            <JFXButton fx:id="export" layoutX="919.0" layoutY="43.0" onAction="#export" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: #333C5D; -fx-background-radius: 12;" text="Export ke excel" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="export1" layoutX="798.0" layoutY="43.0" onAction="#hapus" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #CE0000; -fx-background-radius: 12;" text="Hapus" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="15.0" />
+               </font>
+            </JFXButton>
          </children>
          <BorderPane.margin>
             <Insets />

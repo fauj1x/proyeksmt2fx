@@ -12,6 +12,11 @@ module main.menejemenproduksifx {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.desktop;
+    requires barbecue;
+    requires javafx.swing;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
+
 
     opens main.menejemenproduksifx to javafx.fxml;
     exports main.menejemenproduksifx;

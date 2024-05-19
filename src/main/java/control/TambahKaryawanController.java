@@ -38,7 +38,15 @@ public class TambahKaryawanController implements Initializable {
 
 
 
-
+    @FXML
+    private void dashboard_btn (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("Dashboard.fxml"));
+        Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+        stage.hide();
+        Scene secondscene = new Scene(loader.load());
+        stage.setScene(secondscene);
+        stage.show();
+    }
 
     @FXML
     private void buatrencana (ActionEvent event) throws IOException {
@@ -155,6 +163,14 @@ public class TambahKaryawanController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Data berhasil ditambahkan");
                 alert.showAndWait();
+
+                nama_txt.clear();
+                umur_txt.clear();
+                alamat_txt.clear();
+                jabatan_txt.clear();
+
+                // Mengosongkan ComboBox
+                jenis_kelamin.getSelectionModel().clearSelection();
             } catch (SQLException e) {
                 connection.rollback();
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -165,6 +181,7 @@ public class TambahKaryawanController implements Initializable {
             } finally {
                 connection.setAutoCommit(true);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -174,7 +191,25 @@ public class TambahKaryawanController implements Initializable {
 
     @FXML
     void hps_btn(ActionEvent event) {
+        // Mengosongkan semua TextField
+        nama_txt.clear();
+        umur_txt.clear();
+        alamat_txt.clear();
+        jabatan_txt.clear();
 
+        // Mengosongkan ComboBox
+        jenis_kelamin.getSelectionModel().clearSelection();
+    }
+
+
+    @FXML
+    private void riwayat_transaksi (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(ManagementProduksi.class.getResource("RiwayatTransaksi.fxml"));
+        Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+        stage.hide();
+        Scene secondscene = new Scene(loader.load());
+        stage.setScene(secondscene);
+        stage.show();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
